@@ -18,7 +18,7 @@ export const StyledHeader = styled.header`
 export const StyledP = styled.p`
   cursor: pointer;
   :hover{
-    color: w;
+    color: white;
   }
   margin: 0;
 `;

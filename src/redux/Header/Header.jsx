@@ -8,7 +8,6 @@ function Header() {
   return (
     <StyledHeader>
       <StyledP onClick={() => navigator(`/`)} className="logo"><FaShoppingBasket />SeunghoWhite</StyledP>
-      <StyledP onClick={() => navigator(`/form`)} >작성하러 가기</StyledP>
     </StyledHeader>
   )
 }

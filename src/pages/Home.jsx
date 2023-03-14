@@ -1,26 +1,28 @@
-
-//TODO 여기서 데이터 다 받아와서 IS FALSE 뿌려 줘야함
-
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Card from '../redux/Card/Card'
+import { StyledButton } from '../redux/Card/styles'
+
 
 const Home = () => {
-
-  // todo 저장값 받아와서 map돌려서 내려주기.
   const buys = useSelector((state) => state.buys.buys)
-  console.log('바이스', buys);
-  return (
+  const navigator = useNavigate()
 
+  return (
     <>
-      <h1>홈입니다.사야함</h1>
+      {/* 구매목록 */}
+      <HomeTitleDiv>
+        <HometitleH1>사고싶은 물건들!🥺</HometitleH1>
+        <StyledButton onClick={() => navigator(`/form`)} color={'#777777a6'} height='50px'>작성하러 가기</StyledButton>
+      </HomeTitleDiv>
       <HomeDiv >
         {buys.map((item) => {
           return !item.isDone && <Card buy={item} key={item.id}></Card>
         })}
-
       </HomeDiv>
-      <h1>산것들</h1>
+      {/* 구매완료 */}
+      <HomeTitleDiv><HometitleH1>구매 완료!😋</HometitleH1></HomeTitleDiv>
       <HomeDiv >
         {buys.map((item) => {
           return item.isDone && <Card buy={item} key={item.id}></Card>
@@ -31,11 +33,27 @@ const Home = () => {
 }
 export default Home
 
+const HometitleH1 = styled.div`
+  font-size:40px;
+  margin: 20px;
+`
+
 const HomeDiv = styled.div`
-  border:1px solid black;
+  background-color: #ececec;
   border-radius: 5px;
   margin: 20px;
   display: flex;
   flex-wrap: wrap;
+  min-height: 250px;
 `
+
+const HomeTitleDiv = styled.div`
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  
+`
+
+
 

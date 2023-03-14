@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
 import { deleteBuys, toggleBuys } from '../modules/buysSlice';
+import { ButtonBox, CardContent, CardDiv, CardP, CardTitle, StyledButton } from './styles';
 function Card({ buy }) {
-  // todo 받아온 값을 내려줘야함
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -14,41 +14,22 @@ function Card({ buy }) {
   }
   const TogleButtonHandler = () => {
     dispatch(toggleBuys(buy.id))
-    // console.log(buy);
   }
+
+
   return (
     <CardDiv>
-      <CardTitle>{buy.title}</CardTitle>
-      <CardContent>{buy.coments}</CardContent>
-      <CardPrice>가격:{buy.price}</CardPrice>
-      <StyledButton onClick={DeleteButtonHandler}>삭제</StyledButton>
-      <StyledButton onClick={TogleButtonHandler}>{buy.isDone ? '삼' : '아직못삼'}</StyledButton>
-      <StyledButton onClick={() => navigate(`/update/${buy.id}`)}>수정하기</StyledButton>
-      <StyledButton onClick={() => navigate(`/detail/${buy.id}`)} > 상세보기</StyledButton >
+      <CardTitle><CardP>{buy.title}</CardP></CardTitle>
+      <CardP>가격:{buy.price}</CardP>
+      <CardContent onClick={() => navigate(`/detail/${buy.id}`)}><CardP>{buy.coments}...자세히</CardP></CardContent>
+      <ButtonBox>
+        <StyledButton onClick={DeleteButtonHandler} color={'#e41717'}>삭제</StyledButton>
+        <StyledButton onClick={TogleButtonHandler} color={'#92cc7a'}>{buy.isDone ? '안살래😓' : '구매🙂'}</StyledButton>
+        <StyledButton onClick={() => navigate(`/update/${buy.id}`)} color={'#3537cc'}>수정하기</StyledButton>
+      </ButtonBox>
     </CardDiv >
   )
 }
 
 export default Card
 
-
-const CardDiv = styled.div`
-  width: 240px;
-  height: 200px;
-  border: 1px solid black;
-  margin: 20px;
-`
-
-const CardTitle = styled.h2`
-  color: blue;
-`
-const CardContent = styled.p`
-  color: green;
-`
-const CardPrice = styled.p`
-  color: gray;
-`
-const StyledButton = styled.button`
-  height: ${({ height }) => height};
-  width: ${({ width }) => width};
-`

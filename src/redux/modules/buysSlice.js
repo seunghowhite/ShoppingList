@@ -28,10 +28,19 @@ const initialState = {
   ]
 }
 
+
 const buysSlice = createSlice({
   name: "buys",
   initialState,
   reducers: {
+    updateBuy: (state, action) => {
+      state.buys.forEach((item, index) => {
+        if (item.id === action.payload.id) {
+          state.buys.splice(index, 1, action.payload)
+        }
+      })
+      return state
+    },
     addBuys: (state, action) => {
       return {
         ...state, buys: [...state.buys, {
@@ -60,7 +69,6 @@ const buysSlice = createSlice({
   },
 });
 
-// 액션크리에이터는 컴포넌트에서 사용하기 위해 export 하고
-export const { addBuys, deleteBuys, toggleBuys } = buysSlice.actions;
-// reducer 는 configStore에 등록하기 위해 export default 합니다.
+
+export const { addBuys, deleteBuys, toggleBuys, updateBuy } = buysSlice.actions;
 export default buysSlice.reducer;

@@ -23,9 +23,8 @@ function Card({ buy }) {
       <CardPrice>가격:{buy.price}</CardPrice>
       <StyledButton onClick={DeleteButtonHandler}>삭제</StyledButton>
       <StyledButton onClick={TogleButtonHandler}>{buy.isDone ? '삼' : '아직못삼'}</StyledButton>
-      <StyledButton>수정하기</StyledButton>
-      <StyledButton onClick={() => navigate(`/detail/${buy.id}`)
-      } > 상세보기</StyledButton >
+      <StyledButton onClick={() => navigate(`/update/${buy.id}`)}>수정하기</StyledButton>
+      <StyledButton onClick={() => navigate(`/detail/${buy.id}`)} > 상세보기</StyledButton >
     </CardDiv >
   )
 }

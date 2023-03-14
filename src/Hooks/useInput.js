@@ -3,8 +3,8 @@ import { useState } from 'react'
 
 
 
-const useInput = () => {
-  const [value, setValue] = useState('')
+const useInput = (firstvalue) => {
+  const [value, setValue] = useState(firstvalue)
   const Handler = (e) => {
     setValue(e.target.value)
   }

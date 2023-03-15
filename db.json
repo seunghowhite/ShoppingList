@@ -1,13 +1,6 @@
 {
   "buys": [
     {
-      "title": "1번",
-      "coments": "내용",
-      "price": "가격",
-      "isDone": true,
-      "id": 1
-    },
-    {
       "title": "1",
       "coments": "121212313444444",
       "price": "1",
@@ -15,46 +8,46 @@
       "id": 2
     },
     {
-      "title": "2",
-      "coments": "231",
-      "price": "2",
-      "isDone": false,
-      "id": 3
-    },
-    {
-      "title": "3",
-      "coments": "34",
-      "price": "3",
-      "isDone": false,
-      "id": 4
-    },
-    {
       "title": "4",
       "coments": "4",
       "price": "4",
-      "isDone": false,
+      "isDone": true,
       "id": 5
     },
     {
       "title": "제발",
       "coments": "제발제밟제ㅏㄼ",
       "price": "123",
-      "isDone": false,
+      "isDone": true,
       "id": 6
     },
     {
       "title": "123",
       "coments": "123",
       "price": "123123",
-      "isDone": false,
+      "isDone": true,
       "id": 7
     },
     {
       "title": "",
       "coments": "",
       "price": "123",
-      "isDone": false,
+      "isDone": true,
       "id": 8
+    },
+    {
+      "title": "123",
+      "coments": "1",
+      "price": "123",
+      "isDone": false,
+      "id": 9
+    },
+    {
+      "title": "123",
+      "coments": "ㅁㄴㅇㄻㄴㅇㄹ",
+      "price": "123",
+      "isDone": false,
+      "id": 10
     }
   ]
 }

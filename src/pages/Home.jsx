@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import Button from '../redux/Button/Button'
 import Card from '../redux/Card/Card'
-import { StyledButton } from '../redux/Card/styles'
 import { __getBuys } from '../redux/modules/buysSlice'
 
 
@@ -24,7 +24,7 @@ const Home = () => {
       {/* 구매목록 */}
       <HomeTitleDiv>
         <HometitleH1>사고싶은 물건들!🥺</HometitleH1>
-        <StyledButton onClick={() => navigator(`/form`)} color={'#777777a6'} height='50px'>작성하러 가기</StyledButton>
+        <Button onClick={() => navigator(`/form`)} color={'#777777a6'} height='50px'>작성하러 가기</Button>
       </HomeTitleDiv>
       {/* 사고싶은 물건들 */}
       <HomeDiv >

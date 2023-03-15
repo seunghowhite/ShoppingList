@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import useInput from '../Hooks/useInput';
+import Button from '../redux/Button/Button';
 import { StyledButton } from '../redux/Card/styles';
 import { updateBuy, __updateBuys, } from '../redux/modules/buysSlice';
 
@@ -28,10 +29,14 @@ function Update() {
   }
 
   const submitHnadler = (Buy) => {
-    dispatch(updateBuy(Buy))
-    dispatch(__updateBuys({ id: founddata.id, data: Buy }))
-    alert('수정완료')
-    navigate('/')
+    if (title && coments && price) {
+      dispatch(updateBuy(Buy))
+      dispatch(__updateBuys({ id: founddata.id, data: Buy }))
+      alert('수정완료')
+      navigate('/')
+    } else {
+      alert('값을 입력하세요')
+    }
   }
 
   return (
@@ -43,7 +48,7 @@ function Update() {
         <StyledInput height={'20px'} width={'100px'} type='text' value={price} onChange={pricehandler} />
         <DetailP>내용:</DetailP>
         <StyledInput height={'400px'} width={'500px'} type='text' value={coments} onChange={comentshandler} />
-        <StyledButton height={'20px'} width={'100px'} color={'#777777a6'}>수정하기</StyledButton>
+        <Button height={'20px'} width={'100px'} color={'#777777a6'}>수정하기</Button>
       </StyledForm>
     </DetailDiv>
   )

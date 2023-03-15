@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import useInput from '../Hooks/useInput'
+import Button from '../redux/Button/Button'
 import { StyledButton } from '../redux/Card/styles'
 import { __postBuys } from '../redux/modules/buysSlice'
 // import { addBuys, __postBuys } from '../redux/modules/buysSlice'
@@ -25,9 +26,13 @@ function Form() {
   //!!todo 유효성 검사 해야함
   //!저장!!!!!!!!!!!!!!!!!!!!
   const submitHnadler = (buy) => {
-    dispatch(__postBuys(buy))
-    alert('작성완료')
-    navigate('/')
+    if (title && coments && price) {
+      dispatch(__postBuys(buy))
+      alert('작성완료')
+      navigate('/')
+    } else {
+      alert('값을 입력하세요')
+    }
   }
 
 
@@ -40,7 +45,7 @@ function Form() {
         <StyledInput height={'20px'} width={'100px'} type='number' value={price} onChange={pricehandler} />
         <DetailP>내용:</DetailP>
         <StyledInput height={'400px'} width={'500px'} type='text' value={coments} onChange={comentshandler} />
-        <StyledButton height={'20px'} width={'100px'} color={'#777777a6'} >저장</StyledButton>
+        <Button height={'20px'} width={'100px'} color={'#777777a6'} >저장</Button>
       </StyledForm>
     </DetailDiv>
   )

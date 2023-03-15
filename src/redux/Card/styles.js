@@ -38,17 +38,17 @@ const ButtonBox = styled.div`
     padding: 8px;
   `
 
-const StyledButton = styled.button`
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  position: relative;
-  margin: 5px 5px;
-  height: ${({ height }) => height};
-  width: ${({ width }) => width};
-  :hover{
-    background-color: ${({ color }) => color};
-  }
-`
+// const StyledButton = styled.button`
+//   cursor: pointer;
+//   border: none;
+//   border-radius: 5px;
+//   position: relative;
+//   margin: 5px 5px;
+//   height: ${({ height }) => height};
+//   width: ${({ width }) => width};
+//   :hover{
+//     background-color: ${({ color }) => color};
+//   }
+// `
 
-export { CardDiv, CardTitle, CardContent, CardP, ButtonBox, StyledButton }
+export { CardDiv, CardTitle, CardContent, CardP, ButtonBox }

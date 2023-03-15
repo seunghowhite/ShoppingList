@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import useInput from '../Hooks/useInput'
 import { StyledButton } from '../redux/Card/styles'
-import { addBuys } from '../redux/modules/buysSlice'
+import { __postBuys } from '../redux/modules/buysSlice'
+// import { addBuys, __postBuys } from '../redux/modules/buysSlice'
 
 function Form() {
   const navigate = useNavigate()
@@ -23,12 +24,12 @@ function Form() {
   }
   //!!todo 유효성 검사 해야함
   //!저장!!!!!!!!!!!!!!!!!!!!
-  const submitHnadler = async (buy) => {
-    // dispatch(addBuys(buy))
-    await axios.post("http://localhost:4000/buys", buy);
+  const submitHnadler = (buy) => {
+    dispatch(__postBuys(buy))
     alert('작성완료')
     navigate('/')
   }
+
 
   return (
     <DetailDiv>
@@ -36,7 +37,7 @@ function Form() {
         <DetailP>제목:</DetailP>
         <StyledInput height={'20px'} width={'200px'} type='text' value={title} onChange={titlehandler} />
         <DetailP>가격:</DetailP>
-        <StyledInput height={'20px'} width={'100px'} type='text' value={price} onChange={pricehandler} />
+        <StyledInput height={'20px'} width={'100px'} type='number' value={price} onChange={pricehandler} />
         <DetailP>내용:</DetailP>
         <StyledInput height={'400px'} width={'500px'} type='text' value={coments} onChange={comentshandler} />
         <StyledButton height={'20px'} width={'100px'} color={'#777777a6'} >저장</StyledButton>
@@ -73,7 +74,6 @@ const StyledInput = styled.input`
   border-radius: 8px;
   
 `
-
 
 const DetailP = styled.p`
   color:#8edb6d;

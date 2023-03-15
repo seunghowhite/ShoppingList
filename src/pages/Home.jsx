@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
@@ -12,13 +11,6 @@ const Home = () => {
   const { buys, isLoading, error } = useSelector((state) => state.buys)
   const navigator = useNavigate()
   const dispatch = useDispatch();
-
-  // const getBuys = async () => {
-  //   const { data } = await axios.get('http://localhost:4000/buys')
-  //   const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/buys`)
-  //   setBuyData(data);
-  // }
-
 
   useEffect(() => {
     dispatch(__getBuys())
@@ -34,14 +26,14 @@ const Home = () => {
         <HometitleH1>사고싶은 물건들!🥺</HometitleH1>
         <StyledButton onClick={() => navigator(`/form`)} color={'#777777a6'} height='50px'>작성하러 가기</StyledButton>
       </HomeTitleDiv>
+      {/* 사고싶은 물건들 */}
       <HomeDiv >
-        {/* 조건 걸어주자 */}
         {buys?.map((item) => {
           return !item.isDone && <Card buy={item} key={item.id}></Card>
         })}
       </HomeDiv>
-      {/* 구매완료 */}
       <HomeTitleDiv><HometitleH1>구매 완료!😋</HometitleH1></HomeTitleDiv>
+      {/* 구매완료 */}
       <HomeDiv >
         {buys?.map((item) => {
           return item.isDone && <Card buy={item} key={item.id}></Card>

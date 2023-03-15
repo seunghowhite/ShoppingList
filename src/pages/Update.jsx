@@ -1,35 +1,15 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import useInput from '../Hooks/useInput';
 import { StyledButton } from '../redux/Card/styles';
-import { updateBuy } from '../redux/modules/buysSlice';
+import { updateBuy, __updateBuys, } from '../redux/modules/buysSlice';
 
 function Update() {
   const { buys } = useSelector((state) => state.buys)
-  //!
-  const [buydata, setBuyData] = useState(null)
-  const getBuys = async () => {
-    const { data } = await axios.get('http://localhost:4000/buys')
-    // const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/buys`)
-    setBuyData(data);
-    console.log("데이터!!!!!!!!!", data);
-  }
-
-
-  useEffect(() => {
-    getBuys()
-  }, [])
-  //!
-
-  console.log("buydata!!!!!!!!", buydata);
-
   const params = useParams();
   const navigate = useNavigate()
   const dispatch = useDispatch();
-
 
   const founddata = buys.find(
     (item) => {
@@ -47,17 +27,16 @@ function Update() {
     isDone: founddata.isDone
   }
 
-  const submitHnadler = async (e) => {
-    e.preventDefault();
-    await axios.patch(`http://localhost:4000/buys/${founddata.id}`, Buy);
+  const submitHnadler = (Buy) => {
     dispatch(updateBuy(Buy))
+    dispatch(__updateBuys({ id: founddata.id, data: Buy }))
     alert('수정완료')
     navigate('/')
   }
 
   return (
     <DetailDiv>
-      <StyledForm onSubmit={submitHnadler}>
+      <StyledForm onSubmit={(e) => { e.preventDefault(); submitHnadler(Buy) }}>
         <DetailP>제목:</DetailP>
         <StyledInput height={'20px'} width={'200px'} type='text' value={title} onChange={titlehandler} />
         <DetailP>가격:</DetailP>

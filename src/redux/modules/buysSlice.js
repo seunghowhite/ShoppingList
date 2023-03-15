@@ -3,40 +3,18 @@ import { v4 as uuidv4 } from "uuid";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
+//*초기값
 const initialState = {
-  buys: [
-    // {
-    //   id: uuidv4(),
-    //   title: "닥터마틴",
-    //   coments: "최고의 클래식",
-    //   price: 1200000,
-    //   isDone: false
-    // },
-    // {
-    //   id: uuidv4(),
-    //   title: "슈프림",
-    //   coments: "최고의 스트릿",
-    //   price: 150000,
-    //   isDone: true
-    // },
-    // {
-    //   id: uuidv4(),
-    //   title: "칼하트",
-    //   coments: "최고의 워크웨어",
-    //   price: 2220000,
-    //   isDone: false
-    // },
-  ],
+  buys: [],
   error: null,
   isLoading: false,
 }
 
-// 청크
+//*청크
 export const __getBuys = createAsyncThunk(
   "getBuys",
-  async (_payload, thunk) => {
+  async (payload, thunk) => {
     try {
-      // const { data } = await axios.get("http://localhost:4000/buys");
       const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/buys`)
       return thunk.fulfillWithValue(data);
     } catch (error) {
@@ -44,9 +22,49 @@ export const __getBuys = createAsyncThunk(
     }
   }
 )
+export const __deleteBuys = createAsyncThunk(
+  "deleteBuys",
+  async (payload, thunk) => {
+    try {
 
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/buys/${payload}`)
+    } catch (error) {
+      return thunk.rejectWithValue(error);
+    }
+  }
+)
+export const __togleButton = createAsyncThunk(
+  "toggleButton",
+  async (payload, thunk) => {
+    try {
+      await axios.patch(`${process.env.REACT_APP_SERVER_URL}/buys/${payload.id}`, payload.data);
+    } catch (error) {
+      return thunk.rejectWithValue(error);
+    }
+  }
+)
+export const __updateBuys = createAsyncThunk(
+  "updataBuys",
+  async (payload, thunk) => {
+    try {
+      await axios.patch(`http://localhost:4000/buys/${payload.id}`, payload.data);
+    } catch (error) {
+      return thunk.rejectWithValue(error);
+    }
+  }
+)
+export const __postBuys = createAsyncThunk(
+  "postBuys",
+  async (payload, thunk) => {
+    try {
+      await axios.post("http://localhost:4000/buys", payload);
+    } catch (error) {
 
+    }
+  }
+)
 
+//*슬라이스
 const buysSlice = createSlice({
   name: "buys",
   initialState,

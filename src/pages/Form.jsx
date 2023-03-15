@@ -21,7 +21,7 @@ function Form() {
     price: price,
     isDone: false,
   }
-  //todo 유효성 검사 해야함
+  //!!todo 유효성 검사 해야함
   //!저장!!!!!!!!!!!!!!!!!!!!
   const submitHnadler = async (buy) => {
     // dispatch(addBuys(buy))

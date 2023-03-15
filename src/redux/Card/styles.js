@@ -37,6 +37,7 @@ const CardP = styled.p`
 const ButtonBox = styled.div`
     padding: 8px;
   `
+
 const StyledButton = styled.button`
   cursor: pointer;
   border: none;

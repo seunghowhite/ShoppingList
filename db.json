@@ -1,13 +1,6 @@
 {
   "buys": [
     {
-      "title": "123",
-      "coments": "123",
-      "price": "123",
-      "isDone": true,
-      "id": 2
-    },
-    {
       "title": "ㅁㄴㅇㄻ123",
       "coments": "ㅁㄴㅇㄻㄴㅇ1312321수정했지롱12321",
       "price": "123123",
@@ -25,7 +18,7 @@
       "title": "승우님",
       "coments": "감사합니다",
       "price": "1234",
-      "isDone": false,
+      "isDone": true,
       "id": 5
     }
   ]

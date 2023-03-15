@@ -1,25 +1,32 @@
 {
   "buys": [
     {
-      "id": 1,
-      "title": "닥터마틴",
-      "coments": "최고의 클래식",
-      "pirce": 1200000,
-      "isDone": false
+      "title": "123",
+      "coments": "123",
+      "price": "123",
+      "isDone": true,
+      "id": 2
     },
     {
-      "id": 2,
-      "title": "슈프림",
-      "coments": "최고의 스트릿",
-      "pirce": 500000,
-      "isDone": true
+      "title": "ㅁㄴㅇㄻ123",
+      "coments": "ㅁㄴㅇㄻㄴㅇ1312321수정했지롱12321",
+      "price": "123123",
+      "isDone": true,
+      "id": 3
     },
     {
-      "id": 3,
-      "title": "칼하트",
-      "coments": " 최고의 워크웨어",
-      "pirce": 200000,
-      "isDone": false
+      "title": "ㅇㄻㅇㄴ",
+      "coments": "ㄴㅇㅁㄹㄴㅇㄹ",
+      "price": "123",
+      "isDone": true,
+      "id": 4
+    },
+    {
+      "title": "승우님",
+      "coments": "감사합니다",
+      "price": "1234",
+      "isDone": false,
+      "id": 5
     }
   ]
 }

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -18,19 +19,20 @@ function Form() {
     title: title,
     coments: coments,
     price: price,
+    isDone: false,
   }
   //todo 유효성 검사 해야함
-
-  const submitHnadler = (e) => {
-    e.preventDefault();
-    dispatch(addBuys(buy))
+  //!저장!!!!!!!!!!!!!!!!!!!!
+  const submitHnadler = async (buy) => {
+    // dispatch(addBuys(buy))
+    await axios.post("http://localhost:4000/buys", buy);
     alert('작성완료')
     navigate('/')
   }
 
   return (
     <DetailDiv>
-      <StyledForm onSubmit={submitHnadler}>
+      <StyledForm onSubmit={(e) => { e.preventDefault(); submitHnadler(buy) }}>
         <DetailP>제목:</DetailP>
         <StyledInput height={'20px'} width={'200px'} type='text' value={title} onChange={titlehandler} />
         <DetailP>가격:</DetailP>

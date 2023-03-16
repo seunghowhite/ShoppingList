@@ -2,8 +2,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 
-
-
+//!
 const Detail = () => {
   const { buys } = useSelector((state) => state.buys)
   const params = useParams();

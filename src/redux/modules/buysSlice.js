@@ -2,6 +2,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
+import api from '../../axios/api';
 
 //*초기값
 const initialState = {
@@ -15,7 +16,7 @@ export const __getBuys = createAsyncThunk(
   "getBuys",
   async (payload, thunk) => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/buys`)
+      const { data } = await api.get('/buys')
       return thunk.fulfillWithValue(data);
     } catch (error) {
       return thunk.rejectWithValue(error);
@@ -27,7 +28,7 @@ export const __deleteBuys = createAsyncThunk(
   async (payload, thunk) => {
     try {
 
-      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/buys/${payload}`)
+      await api.delete(`/buys/${payload}`)
     } catch (error) {
       return thunk.rejectWithValue(error);
     }
@@ -37,7 +38,7 @@ export const __togleButton = createAsyncThunk(
   "toggleButton",
   async (payload, thunk) => {
     try {
-      await axios.patch(`${process.env.REACT_APP_SERVER_URL}/buys/${payload.id}`, payload.data);
+      await api.patch(`/buys/${payload.id}`, payload.data);
     } catch (error) {
       return thunk.rejectWithValue(error);
     }
@@ -47,7 +48,7 @@ export const __updateBuys = createAsyncThunk(
   "updataBuys",
   async (payload, thunk) => {
     try {
-      await axios.patch(`http://localhost:4000/buys/${payload.id}`, payload.data);
+      await api.patch(`/buys/${payload.id}`, payload.data);
     } catch (error) {
       return thunk.rejectWithValue(error);
     }
@@ -104,6 +105,7 @@ const buysSlice = createSlice({
     }
   },
   extraReducers: {
+    //*get
     [__getBuys.pending]: (state, action) => {
       state.isLoading = true
     },
@@ -114,7 +116,54 @@ const buysSlice = createSlice({
     [__getBuys.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload
-    }
+    },
+    //*삭재
+    [__deleteBuys.pending]: (state, action) => {
+      state.isLoading = true
+    },
+    [__deleteBuys.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [__deleteBuys.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload
+    },
+    //*토글
+    [__togleButton.pending]: (state, action) => {
+      state.isLoading = true
+    },
+    [__togleButton.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [__togleButton.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload
+    },
+    //*업데이트
+    [__updateBuys.pending]: (state, action) => {
+      state.isLoading = true
+    },
+    [__updateBuys.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [__updateBuys.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload
+    },
+    //*포스트
+    [__postBuys.pending]: (state, action) => {
+      state.isLoading = true
+    },
+    [__postBuys.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [__postBuys.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload
+    },
+
+
+
   }
 
 

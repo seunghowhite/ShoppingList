@@ -24,6 +24,7 @@ const Home = () => {
       {/* 구매목록 */}
       <HomeTitleDiv>
         <HometitleH1>사고싶은 물건들!🥺</HometitleH1>
+        <Button onClick={() => navigator(`/Login`)} color={'#777777a6'} height='50px'>로그인</Button>
         <Button onClick={() => navigator(`/form`)} color={'#777777a6'} height='50px'>작성하러 가기</Button>
       </HomeTitleDiv>
       {/* 사고싶은 물건들 */}
@@ -61,7 +62,7 @@ const HomeDiv = styled.div`
 const HomeTitleDiv = styled.div`
   height: 80px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 10px;
   
 `
